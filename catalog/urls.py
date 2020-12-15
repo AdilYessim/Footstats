@@ -6,10 +6,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('players/', views.PlayerListView.as_view(), name='players'),
     path('player/<int:pk>', 
-    	 views.PlayerDetailView.as_view(), name='player-detail'),
+    	 views.PlayerDetailView.as_view(), name='player_detail'),
 ]
 urlpatterns += [   
     path('clubs/', views.ClubListView.as_view(), name='clubs'),
     path('club/<int:pk>',
-         views.ClubDetailView.as_view(), name='club-detail'),
+         views.ClubDetailView, name='club-detail'),
 ]

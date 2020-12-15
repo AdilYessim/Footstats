@@ -25,7 +25,7 @@ class Player(models.Model):
     nationality =  models.CharField(max_length=100, null = True)
     # Foreign Key used 
     # Player 
-    information = models.TextField(max_length=100, help_text="Enter description of the player")
+    information = models.CharField(max_length=200, help_text="Enter description of the player")
     age = models.CharField('Age',max_length=13, help_text='13 Character <a href="enter age of the player</a>')
     position = models.ForeignKey(Position,  on_delete=models.SET_NULL, null=True, help_text="Select a position of player")
     
@@ -41,7 +41,7 @@ class Player(models.Model):
         """
         Returns the url to access a particular book instance.
         """
-        return reverse('information', args=[str(self.id)])
+        return reverse('player_detail', args=[str(self.id)])
 class Club(models.Model):
     """
     Model representing the club
@@ -49,6 +49,7 @@ class Club(models.Model):
     name = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
     trophies = models.CharField(null=True, blank=True, max_length=100)
+    information = models.CharField(max_length=1000,  null=True, help_text="Enter description of the player") 
     my_teams = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     @property
     def is_overdue(self):

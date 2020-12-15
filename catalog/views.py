@@ -27,8 +27,7 @@ from django.views import generic
 
 class PlayerListView(generic.ListView):
     model = Player
-    paginate_by = 10
-
+    paginate_by = 2
 class PlayerDetailView(generic.DetailView):
     model = Player
     paginate_by = 10
@@ -36,9 +35,10 @@ class PlayerDetailView(generic.DetailView):
 class ClubListView(generic.ListView):
     model = Club
     paginate_by = 10
-class ClubDetailView(generic.DetailView):
-    model = Club
-    paginate_by = 10
+def ClubDetailView(request, pk):
+    club = Club.objects.get(pk=pk)
+    players = Player.objects.all()
+    return render(request, "catalog/club_detail.html", context = {"club": club, "players": players})
 from django.views.generic import View    
 from django.contrib.auth.mixins import LoginRequiredMixin
 class MyView(LoginRequiredMixin, View):

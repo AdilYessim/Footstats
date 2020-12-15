@@ -2,9 +2,7 @@
 
 {% block content %}
   <h1>Name: {{ club.name }}</h1>
-
-  <p><strong>Players:</strong> <a href="player_detail.get_absolute_url">{{ player.Full_name }}</a></p> <!--  detail link not yet defined -->
   <p><strong>Country:</strong> {{ club.country }}</p>
   <p><strong>Trophies:</strong> {{ club.trophies }}</p> 
-
+  <p><strong>Information:</strong> {{club.information}}</p>>
 {% endblock %}

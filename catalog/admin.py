@@ -10,9 +10,9 @@ from .models import Position, Club, Player
 class PlayerInline(admin.TabularInline):
     model = Player
 class ClubAdmin(admin.ModelAdmin):
-    list_display = ('name', 'country', 'trophies', 'my_teams')
+    list_display = ('name', 'country', 'trophies', 'information')
     list_filter = ('trophies', 'country')
-    fields = ['name', 'country', ('trophies',)]
+    fields = ['name', 'country', 'information', ('trophies',)]
     inlines = [PlayerInline]
 # Register the admin class with the associated model
 admin.site.register(Club, ClubAdmin)
